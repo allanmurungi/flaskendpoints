@@ -1,11 +1,13 @@
 from app import app
+from flask import jsonify
 
 @app.route('/')
 @app.route('/index')
 
 
 def index():
-    return "maintenance tracker app endpoints";
+    return jsonify({'message': 'maintenance tracker endpoints!'});
+    
 
 @app.route('/login')
 
