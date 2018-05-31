@@ -61,8 +61,8 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         assert b'you were logged out' in response.data
         
-    def login(self,username,password):
-        return self.app.post('/login',data=dict(email=username,email=password),follow_redirects=True);
+    def login(self,email,password):
+        return self.app.post('/login',data=dict(email=email,password=password),follow_redirects=True);
         
         
 
@@ -77,7 +77,14 @@ class BasicTests(unittest.TestCase):
     # executed after each test
     def tearDown(self):
         pass
-    def create_request():
+    def edit_request(self,req_id,requesttitle,requestdetails):
+        return self.app.post('/createrequest',data=dict(req_id=req_id,requesttitle=requesttitle,requestdetails=requestdetails),follow_redirects=True);
+    def get_request(self,req_id):
+        return self.app.get('/getrequest',data=dict(req_id=req_id),follow_redirects=True);
+    def get_requests(self,email):
+        return self.app.get('/getrequests',data=dict(email=email),follow_redirects=True);
+        
+    def create_request(self):
         return self.app.post('/createrequest',data=dict(requesttitle=requesttitle,requestdetails=requestdetails),follow_redirects=True);
  
  
