@@ -5,7 +5,7 @@ from app import app
 
 
 def index():
-    return "hello world";
+    return "maintenance tracker app endpoints";
 
 @app.route('/login')
 
